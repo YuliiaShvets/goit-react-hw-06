@@ -1,8 +1,13 @@
 import { RiFileUserFill } from "react-icons/ri";
 import { BsFillTelephoneFill } from "react-icons/bs";
+import { useDispatch } from "react-redux";
+import { deleteContact } from "../../redux/contactsSlice.js"
 import s from "./Contact.module.css"
 
-const Contact = ({ id, name, number, handleDelete }) => (
+
+const Contact = ({ id, name, number }) => {
+  const dispatch = useDispatch();
+  return (
   <li className={s.contactList}>
     <div className={s.contact}>
     <span className={s.contactSpan}> <RiFileUserFill className={s.icon}/>
@@ -13,13 +18,14 @@ const Contact = ({ id, name, number, handleDelete }) => (
     </span>
     </div>
     <button
-      onClick={() => handleDelete(id)}
+      onClick={() => dispatch(deleteContact(id))}
       className={s.contactBtn}
     >
       Delete
     </button>
   </li>
 );
+};
 
   
   export default Contact;
