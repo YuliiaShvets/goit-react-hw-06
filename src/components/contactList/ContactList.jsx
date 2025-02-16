@@ -4,10 +4,10 @@ import { useSelector } from "react-redux";
 
 const ContactList = () => {
   const contacts = useSelector((state) => state.contacts.items);
-  const filters = useSelector((state) => state.filters?.filters || ""); 
+  const filter = useSelector((state) => state.filter?.name || ""); 
 
   const filteredData = contacts.filter((item) =>
-    item.name.toLowerCase().includes(filters.toLowerCase()) 
+    item.name.toLowerCase().includes(filter.toLowerCase()) 
   );
 
   return (
